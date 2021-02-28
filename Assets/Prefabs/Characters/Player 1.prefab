@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6b6d1f61f0e3e40bef68f484ee20cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 7
+  runSpeed: 5
 --- !u!1001 &4535174836832144699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,6 +269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338156004826986256, guid: 5859507e95766fa478ba3cceb38ecd24,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 653540454, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}

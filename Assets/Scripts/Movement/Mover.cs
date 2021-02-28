@@ -27,7 +27,6 @@ namespace SwordShield.Movement
         public virtual void MoveTo(Vector3 velocity)
         {
             navMeshAgent.velocity = velocity;
-            //navMeshAgent.destination = destination;
             navMeshAgent.isStopped = false;
         }
 
@@ -42,8 +41,9 @@ namespace SwordShield.Movement
             Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
 
-            float speed = localVelocity.z;
+            
 
+            float speed = localVelocity.z;
             //if(speed > 2)
             //{
             //    speed = 1;
