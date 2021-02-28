@@ -97,7 +97,7 @@ namespace SwordShield.States.PlayerStates
             _verticalMove = player.VerticalMove;
             runSpeed = player.RunSpeed;
             
-
+            
             mover.MoverUpdate();
 
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

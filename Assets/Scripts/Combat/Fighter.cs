@@ -11,6 +11,9 @@ namespace SwordShield.Combat
         private AppleAttackAnimation appleAttackAnimation;
         private Animator animator;
 
+        private float timePassedRunning = 0f;
+        private float maxTimeRunning = 1f;
+
         private bool isAttacking = false;
 
         protected IMover mover;
@@ -93,6 +96,7 @@ namespace SwordShield.Combat
         public virtual void FighterUpdate()
         {
             timeSinceLastAttack += Time.deltaTime;
+            
 
             if (target == null) return;
             if (target.IsDead) return;
@@ -100,6 +104,39 @@ namespace SwordShield.Combat
             float distance = Vector3.Distance(transform.position, target.GetGameObject().transform.position);
 
             bool isInRange = distance < _weaponRange;
+
+            bool tooClose = distance < 3f;
+
+            if (tooClose)
+            {
+                
+
+                if (maxTimeRunning < timePassedRunning)
+                {
+                    timePassedRunning = 0f;
+                    mover.Cancel();
+                    AttackBehaviour();
+                    return;
+                }
+
+                if (!isAttacking)
+                {
+                    timePassedRunning += Time.deltaTime;
+
+                    Vector3 playerPos = target.GetGameObject().transform.position;
+                    Vector3 applePos = gameObject.transform.position;
+
+                    Vector3 playerToApple = applePos - playerPos;
+
+                    playerToApple.Normalize();
+                    Vector3 moveVec = transform.position + playerToApple;
+
+                    mover.MoveTo(moveVec);
+                }
+
+                return;
+            }
+
 
             if (!isInRange)
             {
