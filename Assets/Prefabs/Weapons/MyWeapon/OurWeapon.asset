@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd8429bbc4118344913aa62ec80257f, type: 3}
   m_Name: OurWeapon
   m_EditorClassIdentifier: 
-  weaponAnimatorOverride: {fileID: 22100000, guid: d2e842d593d03ae4caf623cdc70a5809,
-    type: 2}
+  weaponAnimatorOverride: {fileID: 0}
   weaponPrefab: {fileID: 8723835106996459930, guid: 69da151b4c1c48f46a2f1a210f020e7d,
     type: 3}
-  _weaponRange: 2
   _weaponDamage: 20
   projectile: {fileID: 0}
