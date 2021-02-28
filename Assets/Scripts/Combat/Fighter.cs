@@ -8,6 +8,11 @@ namespace SwordShield.Combat
 {
     public class Fighter : MonoBehaviour, IFighter
     {
+        private AppleAttackAnimation appleAttackAnimation;
+        private Animator animator;
+
+        private bool isAttacking = false;
+
         protected IMover mover;
 
         [SerializeField]
@@ -39,8 +44,24 @@ namespace SwordShield.Combat
 
 
 
+        private void AttackStart()
+        {
+            isAttacking = true;
+        }
+
+        private void AttackEnd()
+        {
+            isAttacking = false;
+        }
+
         private void Start() //called just once
         {
+            animator = GetComponent<Animator>();
+
+            appleAttackAnimation = animator.GetBehaviour<AppleAttackAnimation>();
+            appleAttackAnimation.AppleAttackEnter += AttackStart;
+            appleAttackAnimation.AppleAttackExit += AttackEnd;
+
             SpawnWeapon();
         }
 
@@ -54,7 +75,6 @@ namespace SwordShield.Combat
         {
             if (weapon == null) return;
 
-            Animator animator = GetComponent<Animator>();
             weapon.Spawn(weaponParentTransform, animator);
         }
 
@@ -65,8 +85,8 @@ namespace SwordShield.Combat
 
         public virtual void Cancel()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("cancelAttackTrigger");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("cancelAttackTrigger");
             this.target = null;
         }
 
@@ -83,7 +103,10 @@ namespace SwordShield.Combat
 
             if (!isInRange)
             {
-                mover.MoveTo(target.GetGameObject().transform.position);
+                if (!isAttacking)
+                {
+                    mover.MoveTo(target.GetGameObject().transform.position);
+                }
             }
             else
             {
@@ -118,8 +141,8 @@ namespace SwordShield.Combat
 
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                GetComponent<Animator>().ResetTrigger("cancelAttackTrigger");
-                GetComponent<Animator>().SetTrigger("attack");
+                animator.ResetTrigger("cancelAttackTrigger");
+                animator.SetTrigger("attack");
                 timeSinceLastAttack = 0;
                 //since attack animation trigger is set,
                 //this will trigger hit animation event.
