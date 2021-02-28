@@ -135,7 +135,6 @@ namespace SwordShield.Combat
 
             if (weapon.HasProjectile())
             {
-                Debug.Log("APPLE LAUNCH PROJECTILE!!!!!!!!!!!!");
                 weapon.LaunchProjectile(target, weaponParentTransform);
             }
             else

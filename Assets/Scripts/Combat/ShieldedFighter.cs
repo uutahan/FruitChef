@@ -2,11 +2,15 @@
 
 using SwordShield.IMovement;
 using SwordShield.ICombat;
+using System.Collections;
 
 namespace SwordShield.Combat
 {
     public class ShieldedFighter : MonoBehaviour, IFighter
     {
+        private Animator animator;
+        private AttackAnimation attackAnimation;
+
 
         [SerializeField]
         private GameObject sword;
@@ -29,6 +33,11 @@ namespace SwordShield.Combat
 
         private void Start() //called just once
         {
+            animator = GetComponent<Animator>();
+
+            attackAnimation = animator.GetBehaviour<AttackAnimation>();
+            attackAnimation.AttackEnter += AttackStart;
+            attackAnimation.AttackExit += AttackEnd;
 
             SpawnWeapon();
             SpawnShield();
@@ -38,16 +47,16 @@ namespace SwordShield.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("cancelAttackTrigger");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("cancelAttackTrigger");
 
             swordAttack.IsCollide = false;
         }
 
         public void FighterUpdate()
         {
-            GetComponent<Animator>().ResetTrigger("cancelAttackTrigger");
-            GetComponent<Animator>().SetTrigger("attack");
+            animator.ResetTrigger("cancelAttackTrigger");
+            animator.SetTrigger("attack");
         }
 
 
@@ -72,33 +81,23 @@ namespace SwordShield.Combat
             SwordSpawn swordSpawn = sword.GetComponent<SwordSpawn>();
             if (swordSpawn == null) return;
 
-            Animator animator = GetComponent<Animator>();
+            //Animator animator = GetComponent<Animator>();
             swordSpawn.Spawn(weaponParentTransform, animator);
         }
 
-        ////attack animation start event
-        //private void AttackAnimationStartEvent()
-        //{
-        //    swordAttack.IsCollide = true;
-        //}
-
-        ////attack animation end event
-        //private void AttackAnimationEndEvent()
-        //{
-        //    swordAttack.IsCollide = false;
-        //}
-
-        //attack animation start event
-        private void AttackBeginAnimEvent()
+        private void AttackStart()
         {
-            Debug.Log("ATTACK ANIM EVENT BEGIN");
             swordAttack.IsCollide = true;
+        }
+
+        private void AttackEnd()
+        {
+            swordAttack.IsCollide = false;
         }
 
         //attack animation end event
         private void AttackEndAnimEvent()
         {
-            Debug.Log("ATTACK ANIM EVENT END");
             swordAttack.IsCollide = false;
         }
 

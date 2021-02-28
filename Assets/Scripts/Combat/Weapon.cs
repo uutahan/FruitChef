@@ -42,7 +42,7 @@ namespace SwordShield.Combat
             }
             if (weaponAnimatorOverride != null)
             {
-                animator.runtimeAnimatorController = weaponAnimatorOverride;
+                //animator.runtimeAnimatorController = weaponAnimatorOverride;
             }
         }
 

@@ -38,7 +38,6 @@ namespace SwordShield.Combat
 
             if (enemyCount < maxEnemy)
             {
-                Debug.Log("ADDING ENEMY");
                 //GameObject spawnEnemy = Instantiate(enemy, Vector3.zero, Quaternion.identity, parent);
                 //map.Add(spawnEnemy.GetComponent<IHealth>(), spawnEnemy);
 
@@ -91,7 +90,6 @@ namespace SwordShield.Combat
             {
                 if (elem.Key.IsDead)
                 {
-                    Debug.Log("REMOVING ENEMY");
                     enemyCount--;
                     enemyKilled++;
 
