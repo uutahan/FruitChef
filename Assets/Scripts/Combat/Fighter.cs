@@ -105,21 +105,21 @@ namespace SwordShield.Combat
 
             bool isInRange = distance < _weaponRange;
 
-            bool tooClose = distance < 3f;
+            bool tooClose = distance < 4f;
 
-            if (tooClose)
+            if (tooClose && (maxTimeRunning > timePassedRunning) )
             {
                 
 
-                if (maxTimeRunning < timePassedRunning)
-                {
-                    timePassedRunning = 0f;
-                    mover.Cancel();
-                    AttackBehaviour();
-                    return;
-                }
+                //if (maxTimeRunning < timePassedRunning)
+                //{
+                //    timePassedRunning = 0f;
+                //    mover.Cancel();
+                //    AttackBehaviour();
+                //    return;
+                //}
 
-                if (!isAttacking)
+                if (!isAttacking   )
                 {
                     timePassedRunning += Time.deltaTime;
 
@@ -131,17 +131,25 @@ namespace SwordShield.Combat
                     playerToApple.Normalize();
                     Vector3 moveVec = transform.position + playerToApple;
 
+                    animator.ResetTrigger("attack");
+                    animator.SetTrigger("cancelAttackTrigger");
                     mover.MoveTo(moveVec);
+
+                    return;
                 }
 
-                return;
+                //return;
             }
+
+            timePassedRunning = 0f;
 
 
             if (!isInRange)
             {
                 if (!isAttacking)
                 {
+                    animator.ResetTrigger("attack");
+                    animator.SetTrigger("cancelAttackTrigger");
                     mover.MoveTo(target.GetGameObject().transform.position);
                 }
             }
@@ -168,6 +176,8 @@ namespace SwordShield.Combat
 
             float remainingTime=Mathf.Max(timeBetweenAttacks - timeSinceLastAttack, 0);
             float angularSpeed = 180 / remainingTime;
+
+            angularSpeed = 500f;
 
             var q = Quaternion.LookRotation(target.GetGameObject().transform.position - transform.position);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, angularSpeed * Time.deltaTime);
