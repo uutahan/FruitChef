@@ -31,8 +31,8 @@ Material:
     - _Radius: 0.3
     - _RandomHeight: 0.25
     - _Strength: 5
-    - _WindSpeed: 100
+    - _WindSpeed: 0
     - _WindStrength: 0.05
     m_Colors:
-    - _BottomColor: {r: 0, g: 1, b: 0, a: 1}
-    - _TopColor: {r: 1, g: 1, b: 0, a: 1}
+    - _BottomColor: {r: 0.3379762, g: 0.46226418, b: 0.3379762, a: 1}
+    - _TopColor: {r: 0.4073822, g: 0.5754717, b: 0.36645603, a: 1}
