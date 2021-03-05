@@ -17,8 +17,9 @@ namespace SwordShield.Combat
             {
                 Vector3 rot = other.transform.rotation.eulerAngles;
                 //rot = new Vector3(rot.x, rot.y + 180, rot.z);
-                Instantiate(panEffect, other.transform.position, Quaternion.Euler(rot));
+                ParticleSystem newEffect = Instantiate(panEffect, other.transform.position, Quaternion.Euler(rot));
 
+                Destroy(newEffect.gameObject, 2f);
             }
         }
     }
