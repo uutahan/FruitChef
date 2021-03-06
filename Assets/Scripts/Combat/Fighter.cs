@@ -11,6 +11,12 @@ namespace SwordShield.Combat
         private AppleAttackAnimation appleAttackAnimation;
         private Animator animator;
 
+        [SerializeField]
+        private AudioSource audioSourceAppleAttack = null;
+
+        [SerializeField]
+        public AudioClip audioClip;
+
         private float timePassedRunning = 0f;
         private float maxTimeRunning = 1f;
 
@@ -50,6 +56,7 @@ namespace SwordShield.Combat
         private void AttackStart()
         {
             isAttacking = true;
+            audioSourceAppleAttack.PlayOneShot(audioClip);
         }
 
         private void AttackEnd()
@@ -59,6 +66,7 @@ namespace SwordShield.Combat
 
         private void Start() //called just once
         {
+
             animator = GetComponent<Animator>();
 
             appleAttackAnimation = animator.GetBehaviour<AppleAttackAnimation>();

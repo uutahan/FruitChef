@@ -11,6 +11,11 @@ namespace SwordShield.Combat
         private Animator animator;
         private AttackAnimation attackAnimation;
 
+        private AudioSource audioSource = null;
+
+        [SerializeField]
+        public AudioClip audioClip;
+
 
         [SerializeField]
         private GameObject sword;
@@ -33,6 +38,8 @@ namespace SwordShield.Combat
 
         private void Start() //called just once
         {
+            audioSource = GetComponent<AudioSource>();
+
             animator = GetComponent<Animator>();
 
             attackAnimation = animator.GetBehaviour<AttackAnimation>();
@@ -64,7 +71,6 @@ namespace SwordShield.Combat
         public void FighterStart()
         {
             swordAttack.IsCollide = false;
-
         }
 
         private void SpawnShield()
@@ -88,6 +94,7 @@ namespace SwordShield.Combat
         private void AttackStart()
         {
             swordAttack.IsCollide = true;
+            audioSource.PlayOneShot(audioClip);
         }
 
         private void AttackEnd()

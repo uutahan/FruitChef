@@ -8,6 +8,17 @@ namespace SwordShield.Movement
     {
         protected NavMeshAgent navMeshAgent;
 
+        private AudioSource audioSource = null;
+
+        [SerializeField]
+        protected AudioClip audioClip;
+
+        void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+           
+        }
+
         public void EnableNavMeshAgent(bool isEnable)
         {
             navMeshAgent.enabled = isEnable;
@@ -26,8 +37,15 @@ namespace SwordShield.Movement
 
         public virtual void MoveTo(Vector3 velocity)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(audioClip, 3);
+            }
+
             navMeshAgent.velocity = velocity;
             navMeshAgent.isStopped = false;
+
+            
         }
 
         public virtual void Cancel()
