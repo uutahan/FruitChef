@@ -7,6 +7,8 @@ namespace SwordShield.Combat
 {
     public class EnemySpawner : MonoBehaviour
     {
+        public Game game;
+
         [SerializeField]
         private GameObject enemy = null;
 
@@ -27,6 +29,8 @@ namespace SwordShield.Combat
 
         private void Start()
         {
+            Debug.Log("Game Mode is normal: " + game.isNormalMode);
+
             map = new Dictionary<IHealth, GameObject>();
         }
 
@@ -97,20 +101,31 @@ namespace SwordShield.Combat
 
                     map.Remove(elem.Key);
 
+                    if (game.isNormalMode)
+                    {
+                        if (enemyKilled <= 2)
+                        {
+                            maxEnemy = 2;
+                        }
+                        else if (enemyKilled <= 4)
+                        {
+                            maxEnemy = 3;
+                        }
+                        else if (enemyKilled <= 6)
+                        {
+                            maxEnemy = 4;
+                        }
+                    }
 
-                    if (enemyKilled <= 1)
+                    else if (!game.isNormalMode)
                     {
-                        maxEnemy = 2;
-                    }
-                    else if (enemyKilled <= 2)
-                    {
-                        maxEnemy = 3;
-                    }
-                    else if (enemyKilled <= 3)
-                    {
-                        maxEnemy = 4;
-                    }
+                        maxEnemy = enemyKilled / 2;
 
+                        if (maxEnemy < 2)
+                        {
+                            maxEnemy += 1;
+                        }
+                    }
                 }
             }
         }

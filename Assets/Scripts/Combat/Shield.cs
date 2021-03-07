@@ -13,7 +13,6 @@ namespace SwordShield.Combat
         {
             if (shieldPrefab != null)
             {
-                Debug.Log("SHIELD INSTANTIATE");
                 Instantiate(shieldPrefab, parentTransform);
             }
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace SwordShield.Core
 {
@@ -8,6 +9,9 @@ namespace SwordShield.Core
         private float health = 100;
 
         private bool _isDead = false;
+
+        [SerializeField]
+        private GameObject gameOverPanel = null;
 
         public GameObject GetGameObject()
         {
@@ -39,6 +43,18 @@ namespace SwordShield.Core
             {
                 _isDead = true;
                 GetComponent<Animator>().SetTrigger("dieTrigger");
+
+                StartCoroutine(GameOverScreen());
+            }
+        }
+
+        private IEnumerator GameOverScreen()
+        {
+            yield return new WaitForSeconds(1.5f);
+
+            if(gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true);
             }
         }
     }
