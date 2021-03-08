@@ -2,11 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SwordShield.Combat
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject scoreTextGO;
+
+        private TMPro.TMP_Text textScore;
+
         public Game game;
 
         [SerializeField]
@@ -31,13 +37,12 @@ namespace SwordShield.Combat
         {
             Debug.Log("Game Mode is normal: " + game.isNormalMode);
 
+            textScore = scoreTextGO.GetComponent<TMPro.TextMeshProUGUI>();
             map = new Dictionary<IHealth, GameObject>();
         }
 
         private void Update()
         {
-            
-
             CheckDeadEnemies();
 
             if (enemyCount < maxEnemy)
@@ -78,16 +83,6 @@ namespace SwordShield.Combat
 
         private void CheckDeadEnemies()
         {
-            //foreach(IHealth enemyHealth in enemyList.ToArray())
-            //{
-            //    if (enemyHealth.IsDead)
-            //    {
-            //        Debug.Log("REMOVING ENEMY");
-            //        enemyCount--;
-            //        enemyList.Remove(enemyHealth);
-            //    }
-            //}
-
             Dictionary<IHealth, GameObject> copy = new Dictionary<IHealth, GameObject>(map);
 
             foreach (var elem in copy)
@@ -96,6 +91,9 @@ namespace SwordShield.Combat
                 {
                     enemyCount--;
                     enemyKilled++;
+
+                    int score = enemyKilled * 10;
+                    textScore.text = "Score: " + score.ToString();
 
                     StartCoroutine(DestroyDeadEnemy(elem.Value));
 
@@ -115,15 +113,20 @@ namespace SwordShield.Combat
                         {
                             maxEnemy = 4;
                         }
+
+                        else if (enemyKilled <= 10)
+                        {
+                            maxEnemy = 5;
+                        }
                     }
 
                     else if (!game.isNormalMode)
                     {
                         maxEnemy = enemyKilled / 2;
 
-                        if (maxEnemy < 2)
+                        if (maxEnemy < 1)
                         {
-                            maxEnemy += 1;
+                            maxEnemy = 1;
                         }
                     }
                 }

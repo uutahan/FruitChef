@@ -5,13 +5,24 @@ namespace SwordShield.Core
 {
     public class Health : MonoBehaviour, IHealth
     {
+
         [SerializeField]
         private float health = 100;
 
         private bool _isDead = false;
 
         [SerializeField]
-        private GameObject gameOverPanel = null;
+        private GameObject ScoreManagerGO = null;
+
+        private ScoreManager scoreManager = null;
+
+        void Start()
+        {
+            if(ScoreManagerGO != null)
+            {
+                scoreManager = ScoreManagerGO.GetComponent<ScoreManager>();
+            }
+        }
 
         public GameObject GetGameObject()
         {
@@ -44,18 +55,12 @@ namespace SwordShield.Core
                 _isDead = true;
                 GetComponent<Animator>().SetTrigger("dieTrigger");
 
-                StartCoroutine(GameOverScreen());
+                if(scoreManager != null)
+                {
+                    scoreManager.DoGameOver();
+                }
             }
         }
 
-        private IEnumerator GameOverScreen()
-        {
-            yield return new WaitForSeconds(1.5f);
-
-            if(gameOverPanel != null)
-            {
-                gameOverPanel.SetActive(true);
-            }
-        }
     }
 }
