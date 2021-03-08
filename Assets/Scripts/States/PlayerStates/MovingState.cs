@@ -100,6 +100,7 @@ namespace SwordShield.States.PlayerStates
             
             mover.MoverUpdate();
 
+
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //RaycastHit hit;
             //bool hasHit = Physics.Raycast(ray, out hit);

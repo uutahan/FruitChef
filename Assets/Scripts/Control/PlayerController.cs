@@ -61,14 +61,12 @@ namespace SwordShield.Control
                 _verticalMove = runSpeed;
             }
 
-
-
             if(_horizontalMove!=0 || _verticalMove != 0)
             {
                 input = GameInput.MoveInput;
             }
 
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonUp(0))
             {
                 input = GameInput.AttackInput;
             }

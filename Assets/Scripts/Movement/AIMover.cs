@@ -24,6 +24,7 @@ namespace SwordShield.Movement
         public override void Cancel()
         {
             navMeshAgent.isStopped = true;
+            //GetComponent<Animator>().SetFloat("forwardSpeed", 0);
         }
 
     }

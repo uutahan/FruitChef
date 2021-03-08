@@ -52,6 +52,7 @@ namespace SwordShield.Movement
         {
             navMeshAgent.velocity = Vector3.zero;
             navMeshAgent.isStopped = true;
+            GetComponent<Animator>().SetFloat("forwardSpeed", 0);
         }
 
         private void UpdateAnimator()
