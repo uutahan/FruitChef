@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 3483395980083145045
     second: pan|panAction
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: d91dd10ec233cd743b77f607e76530b0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
