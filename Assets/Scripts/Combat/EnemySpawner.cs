@@ -92,8 +92,8 @@ namespace SwordShield.Combat
                     enemyCount--;
                     enemyKilled++;
 
-                    int score = enemyKilled * 10;
-                    textScore.text = "Score: " + score.ToString();
+                    int score = enemyKilled;
+                    textScore.text = score.ToString();
 
                     StartCoroutine(DestroyDeadEnemy(elem.Value));
 
