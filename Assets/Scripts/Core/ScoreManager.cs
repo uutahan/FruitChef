@@ -53,10 +53,10 @@ namespace SwordShield.Core
             if (gameOverPanel != null)
             {
                 string text = textScore.text;
-                string scoreInText=text.Substring(7);
+                //string scoreInText=text.Substring(7);
 
 
-                int score = int.Parse(scoreInText);
+                int score = int.Parse(text);
 
                 if (score > bestScore)
                 {
@@ -74,7 +74,7 @@ namespace SwordShield.Core
 
 
                 textBestScore.text = "BEST SCORE: " + bestScore;
-                endGameTextScore.text = scoreInText;
+                endGameTextScore.text = text;
                 scoreTextGO.SetActive(false);
                 gameOverPanel.SetActive(true);
                 
