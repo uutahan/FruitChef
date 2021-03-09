@@ -122,12 +122,8 @@ namespace SwordShield.Combat
 
                     else if (!game.isNormalMode)
                     {
-                        maxEnemy = enemyKilled / 2;
+                        maxEnemy = enemyKilled + 1;
 
-                        if (maxEnemy < 1)
-                        {
-                            maxEnemy = 1;
-                        }
                     }
                 }
             }
