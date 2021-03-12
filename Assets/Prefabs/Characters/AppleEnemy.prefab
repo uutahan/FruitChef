@@ -327,6 +327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: apple-v2
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: c79b9cbe0edd0f043b1bb409fe0e49ba,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d18f8b083df1c4e419c1f9a6e737c71a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c79b9cbe0edd0f043b1bb409fe0e49ba, type: 3}
 --- !u!4 &7988263620793106865 stripped
@@ -483,6 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7338156004826986255, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
+    - {fileID: 3682872161234170123, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
 --- !u!1 &2805404569645269563 stripped
 GameObject:
