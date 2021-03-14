@@ -284,8 +284,7 @@ PrefabInstance:
     - target: {fileID: 653540454, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: fd19fc34075b5294aa64540a719bf751,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 653540454, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
       propertyPath: weaponParentTransform
       value: 
@@ -293,8 +292,7 @@ PrefabInstance:
     - target: {fileID: 653540454, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
       propertyPath: shield
       value: 
-      objectReference: {fileID: 11400000, guid: cc365e97a844b784f8e5babf69dca6b6,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 653540454, guid: 5859507e95766fa478ba3cceb38ecd24, type: 3}
       propertyPath: shieldParentTransform
       value: 
@@ -307,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f31a6da96be031646b5bdcad26d9e1c9, type: 2}
+    - target: {fileID: 2608719783290846384, guid: 5859507e95766fa478ba3cceb38ecd24,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6232153568606442149, guid: 5859507e95766fa478ba3cceb38ecd24,
         type: 3}
       propertyPath: m_LocalPosition.x
