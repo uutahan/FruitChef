@@ -25,7 +25,7 @@ namespace SwordShield.Combat
         private Transform parent = null;
 
         [SerializeField]
-        private float radius = 20f;
+        private float radius = 13f;
 
         private int enemyCount = 0;
         private int maxEnemy = 1;
