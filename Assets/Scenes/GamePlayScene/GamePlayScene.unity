@@ -715,9 +715,8 @@ MonoBehaviour:
   scoreTextGO: {fileID: 329507352}
   game: {fileID: 7484659658847279337, guid: fcdf9b4c3864c3640904c2b6bb47ccb9, type: 3}
   enemy: {fileID: 2805404569645269563, guid: 4ea5bc9ab1a82944f8a9eb44c8a69e90, type: 3}
-  player: {fileID: 2765604250872725416, guid: d81a0c7790ac73a44bf284c5637cdbf8, type: 3}
+  player: {fileID: 1975714804}
   parent: {fileID: 27832905}
-  radius: 20
 --- !u!4 &27832905
 Transform:
   m_ObjectHideFlags: 0
@@ -7400,7 +7399,7 @@ PrefabInstance:
     - target: {fileID: 6912098603197424334, guid: 72d69d44e188129429f1765d93182664,
         type: 3}
       propertyPath: health
-      value: 1
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 6912098603197424334, guid: 72d69d44e188129429f1765d93182664,
         type: 3}
@@ -22575,6 +22574,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cfde27d15d98bdb4bac00ee3475585d2,
     type: 3}
   m_PrefabInstance: {fileID: 735726562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1975714804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2765604250872725416, guid: 72d69d44e188129429f1765d93182664,
+    type: 3}
+  m_PrefabInstance: {fileID: 748499124}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1976444899 stripped
 Transform:
